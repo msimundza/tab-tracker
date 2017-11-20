@@ -14,10 +14,7 @@ module.exports = {
             "error",
             "tab"
         ],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
+        "linebreak-style": 0,
         "quotes": [
             "error",
             "single"
@@ -28,6 +25,7 @@ module.exports = {
         ],
         "no-console": ["error", {
             allow: ["log", "error"]
-        }]
+        }],
+        "space-before-function-paren": ["error", "always"]
     }
 };
