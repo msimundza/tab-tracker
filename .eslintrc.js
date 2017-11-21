@@ -26,6 +26,7 @@ module.exports = {
         "no-console": ["error", {
             allow: ["log", "error"]
         }],
-        "space-before-function-paren": ["error", "always"]
+        "space-before-function-paren": ["error", "always"],
+        "no-process-env": "off"
     }
 };
