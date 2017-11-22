@@ -1,7 +1,9 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
     <v-toolbar-title class="mr-4">
-      TabTracker
+      <v-btn flat dark to="/">
+        TabTracker
+      </v-btn>
     </v-toolbar-title>
 
     <!-- TODO: IMPLEMENT ME -->
@@ -12,7 +14,10 @@
     </v-toolbar-items> -->
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn flat dark to="register">
+      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark to="login">
+        Login
+      </v-btn>
+      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark to="register">
         Sign up
       </v-btn>
     </v-toolbar-items>

@@ -27,6 +27,11 @@ module.exports = {
             allow: ["log", "error"]
         }],
         "space-before-function-paren": ["error", "always"],
-        "no-process-env": "off"
+        "no-process-env": "off",
+        "prefer-destructuring": ["error", {
+            VariableDeclarator: {
+                object: false
+            }
+        }]
     }
 };
