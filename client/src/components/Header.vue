@@ -20,13 +20,25 @@
       <v-btn v-if="!$store.state.isUserLoggedIn" flat dark to="register">
         Sign up
       </v-btn>
+      <v-btn @click="logout" v-if="$store.state.isUserLoggedIn" flat dark>
+        Logout
+      </v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
 
 <script>
 export default {
-  name: "PageHeader"
+  name: "PageHeader",
+  methods: {
+    logout() {
+      this.$store.dispatch("setToken", null);
+      this.$store.dispatch("setUser", null);
+      this.$router.push({
+        name: "root"
+      });
+    }
+  }
 };
 </script>
 
