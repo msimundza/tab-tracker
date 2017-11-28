@@ -5,6 +5,9 @@
         <div class="song-title">{{song.title}}</div>
         <div class="song-artist">{{song.artist}}</div>
         <div class="song-genre">{{song.genre}}</div>
+        <v-btn class="cyan" dark :to="{name: 'song-edit', params: {songId: song.id}}">
+          Edit
+        </v-btn>
       </v-flex>
       <v-flex xs6>
         <img :src="song.albumImageUrl" class="album-image">
