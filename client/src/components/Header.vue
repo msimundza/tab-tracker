@@ -1,13 +1,17 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
     <v-toolbar-title class="mr-4">
-      <v-btn flat dark to="/">
+      <router-link class="home" tag="span" :to="{
+          name: 'songs'
+        }">
         TabTracker
-      </v-btn>
+      </router-link>
     </v-toolbar-title>
 
     <v-toolbar-items>
-      <v-btn flat dark to="songs">
+      <v-btn flat dark :to="{
+          name: 'songs'
+        }">
         Browse
       </v-btn>
     </v-toolbar-items>
@@ -15,14 +19,20 @@
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark to="login">
+      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark :to="{
+          name: 'login'
+        }">
         Login
       </v-btn>
-      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark to="register">
-        Sign up
+
+      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark :to="{
+          name: 'register'
+        }">
+        Sign Up
       </v-btn>
-      <v-btn @click="logout" v-if="$store.state.isUserLoggedIn" flat dark>
-        Logout
+
+      <v-btn v-if="$store.state.isUserLoggedIn" flat dark @click="logout">
+        Log Out
       </v-btn>
     </v-toolbar-items>
   </v-toolbar>
@@ -30,20 +40,20 @@
 
 <script>
 export default {
-  name: "PageHeader",
   methods: {
     logout() {
       this.$store.dispatch("setToken", null);
       this.$store.dispatch("setUser", null);
       this.$router.push({
-        name: "root"
+        name: "songs"
       });
     }
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.home {
+  cursor: pointer;
+}
 </style>
