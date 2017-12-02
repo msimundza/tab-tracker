@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-flex xs6 offset-xs3>
-      <panel title="Register">
+      <Panel title="Register">
         <form name="tab-tracker-form" autocomplete="off">
           <v-text-field label="Email" v-model="email"></v-text-field>
           <v-text-field label="Password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
@@ -11,14 +11,13 @@
             Register
           </v-btn>
         </form>
-      </panel>
+      </Panel>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import AuthenticationService from "@/services/AuthenticationService";
-import Panel from "@/components/Panel";
 
 export default {
   data() {
@@ -41,9 +40,6 @@ export default {
         this.error = error.response.data.error;
       }
     }
-  },
-  components: {
-    Panel
   }
 };
 </script>

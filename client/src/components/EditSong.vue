@@ -2,21 +2,21 @@
   <v-layout>
     <v-flex xs4>
       <div>
-        <panel title="Song Metadata">
+        <Panel title="Song Metadata">
           <v-text-field label="Title" required :rules="[required]" v-model="song.title"></v-text-field>
           <v-text-field label="Artist" required :rules="[required]" v-model="song.artist"></v-text-field>
           <v-text-field label="Genre" required :rules="[required]" v-model="song.genre"></v-text-field>
           <v-text-field label="Album" required :rules="[required]" v-model="song.album"></v-text-field>
           <v-text-field label="Album Image Url" required :rules="[required]" v-model="song.albumImageUrl"></v-text-field>
           <v-text-field label="Youtube ID" required :rules="[required]" v-model="song.youtubeId"></v-text-field>
-        </panel>
+        </Panel>
       </div>
     </v-flex>
     <v-flex xs8>
-      <panel title="Song Structure" class="ml-2">
+      <Panel title="Song Structure" class="ml-2">
         <v-text-field label="Tab" multi-line required :rules="[required]" v-model="song.tab"></v-text-field>
         <v-text-field label="Lyrics" multi-line required :rules="[required]" v-model="song.lyrics"></v-text-field>
-      </panel>
+      </Panel>
       <v-alert class="ml-4" :value="error" transition="scale-transition" error>
         {{error}}
       </v-alert>
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import Panel from "@/components/Panel";
 import SongsService from "@/services/SongsService";
 
 export default {
@@ -47,9 +46,6 @@ export default {
       error: null,
       required: value => !!value || "This field is required"
     };
-  },
-  components: {
-    Panel
   },
   methods: {
     async save() {

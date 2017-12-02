@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
-    <v-flex xs6 offset-xs3>
-      <panel title="Songs">
+    <v-flex>
+      <Panel title="Songs">
         <v-btn slot="action" class="cyan accent-2" fab light medium absolute right middle :to="{
           name: 'songs-create'
         }">
@@ -22,25 +22,26 @@
             </v-flex>
           </v-layout>
         </div>
-      </panel>
+      </Panel>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import SongsService from "@/services/SongsService";
-import Panel from "@/components/Panel";
 export default {
   data() {
     return {
       songs: null
     };
   },
-  components: {
-    Panel
-  },
-  async mounted() {
-    this.songs = (await SongsService.index()).data;
+  watch: {
+    "$route.query.search": {
+      immediate: true,
+      async handler(value) {
+        this.songs = (await SongsService.index(value)).data;
+      }
+    }
   }
 };
 </script>

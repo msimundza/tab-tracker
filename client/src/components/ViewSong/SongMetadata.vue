@@ -1,5 +1,5 @@
 <template>
-  <panel title="Song Metadata">
+  <Panel title="Song Metadata">
     <v-layout>
       <v-flex xs6>
         <div class="song-title">{{song.title}}</div>
@@ -14,16 +14,12 @@
         <br> {{song.album}}
       </v-flex>
     </v-layout>
-  </panel>
+  </Panel>
 </template>
 
 <script>
-import Panel from "@/components/Panel";
 export default {
-  props: ["song"],
-  components: {
-    Panel
-  }
+  props: ["song"]
 };
 </script>
 

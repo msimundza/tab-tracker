@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-flex xs6 offset-xs3>
-      <panel title="Login">
+      <Panel title="Login">
         <v-text-field label="Email" v-model="email"></v-text-field>
         <v-text-field label="Password" type="password" v-model="password"></v-text-field>
         <div class="error" v-html="error" />
@@ -9,14 +9,13 @@
         <v-btn class="cyan" dark @click="login">
           Login
         </v-btn>
-      </panel>
+      </Panel>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import AuthenticationService from "@/services/AuthenticationService";
-import Panel from "@/components/Panel";
 
 export default {
   data() {
@@ -39,9 +38,6 @@ export default {
         this.error = error.response.data.error;
       }
     }
-  },
-  components: {
-    Panel
   }
 };
 </script>
