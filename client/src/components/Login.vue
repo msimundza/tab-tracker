@@ -4,8 +4,9 @@
       <Panel title="Login">
         <v-text-field label="Email" v-model="email"></v-text-field>
         <v-text-field label="Password" type="password" v-model="password"></v-text-field>
-        <div class="error" v-html="error" />
-        <br>
+        <v-alert :value="error" transition="scale-transition" error>
+          {{error}}
+        </v-alert>
         <v-btn class="cyan" dark @click="login">
           Login
         </v-btn>
@@ -34,6 +35,7 @@ export default {
         });
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.token);
+        this.$router.push({ name: "songs" });
       } catch (error) {
         this.error = error.response.data.error;
       }

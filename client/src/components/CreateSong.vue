@@ -17,7 +17,7 @@
         <v-text-field label="Tab" multi-line required :rules="[required]" v-model="song.tab"></v-text-field>
         <v-text-field label="Lyrics" multi-line required :rules="[required]" v-model="song.lyrics"></v-text-field>
       </Panel>
-      <v-alert class="ml-4" :value="error" transition="scale-transition" error>
+      <v-alert :value="error" transition="scale-transition" error>
         {{error}}
       </v-alert>
       <v-btn class="cyan" dark @click="create">

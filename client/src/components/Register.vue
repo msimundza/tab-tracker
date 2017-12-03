@@ -5,7 +5,9 @@
         <form name="tab-tracker-form" autocomplete="off">
           <v-text-field label="Email" v-model="email"></v-text-field>
           <v-text-field label="Password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
-          <div class="error" v-html="error" />
+          <v-alert :value="error" transition="scale-transition" error>
+            {{error}}
+          </v-alert>
           <br>
           <v-btn class="cyan" dark @click="register">
             Register
@@ -36,6 +38,7 @@ export default {
         });
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.token);
+        this.$router.push({ name: "songs" });
       } catch (error) {
         this.error = error.response.data.error;
       }

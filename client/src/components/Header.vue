@@ -2,7 +2,7 @@
   <v-toolbar fixed class="cyan" dark>
     <v-toolbar-title class="mr-4">
       <router-link class="home" tag="span" :to="{
-          name: 'songs'
+          name: 'root'
         }">
         TabTracker
       </router-link>
