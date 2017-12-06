@@ -21,7 +21,8 @@ module.exports = {
 					history.Song,
 					history
 				))
-			res.send(histories)
+			console.log(histories)
+			res.send(_.uniqBy(histories, history => history.SongId))
 		} catch (err) {
 			res.status(500).send({
 				error: 'an error has occured trying to fetch the history'
@@ -30,13 +31,13 @@ module.exports = {
 	},
 	async post (req, res) {
 		try {
+			const userId = req.user.id
 			const {
-				songId,
-				userId
+				songId
 			} = req.body
 			const history = await History.create({
-				songId,
-				userId
+				SongId: songId,
+				UserId: userId
 			})
 			res.send(history)
 		} catch (err) {

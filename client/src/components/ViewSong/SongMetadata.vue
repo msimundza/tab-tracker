@@ -62,8 +62,7 @@ export default {
 
       try {
         const bookmarks = (await BookmarksService.index({
-          songId: this.song.id,
-          userId: this.user.id
+          songId: this.song.id
         })).data;
         if (bookmarks.length) {
           this.bookmark = bookmarks[0];
@@ -76,11 +75,9 @@ export default {
   methods: {
     async setAsBookmark() {
       try {
-        const bookmark = {
-          songId: this.song.id,
-          userId: this.user.id
-        };
-        this.bookmark = (await BookmarksService.post(bookmark)).data;
+        this.bookmark = (await BookmarksService.post({
+          songId: this.song.id
+        })).data;
       } catch (err) {
         console.log(err);
       }
