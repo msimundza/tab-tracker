@@ -61,11 +61,13 @@ export default {
       }
 
       try {
-        const query = {
+        const bookmarks = (await BookmarksService.index({
           songId: this.song.id,
           userId: this.user.id
-        };
-        this.bookmark = (await BookmarksService.index(query)).data;
+        })).data;
+        if (bookmarks.length) {
+          this.bookmark = bookmarks[0];
+        }
       } catch (err) {
         console.log(err);
       }
@@ -76,7 +78,7 @@ export default {
       try {
         const bookmark = {
           songId: this.song.id,
-          userId: this.$store.state.user.id
+          userId: this.user.id
         };
         this.bookmark = (await BookmarksService.post(bookmark)).data;
       } catch (err) {
